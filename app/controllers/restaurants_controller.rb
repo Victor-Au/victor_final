@@ -20,7 +20,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    url = "https://api.foursquare.com/v2/venues/#{params[:restaurant][:venue_id]}?client_id=#{ENV['CLIENT_ID']}&client_secret=#{ENV['CLIENT_SECRET']}&v=20140815"
+    url = "https://api.foursquare.com/v2/venues/#{params[:restaurant][:venue_id]}?client_id=#{ENV['FOURSQUARE_ID']}&client_secret=#{ENV['FOURSQUARE_SECRET']}&v=20140815"
     response = RestClient.get(url)
     parsed_response = JSON.parse(response)
     address_base = parsed_response["response"]["venue"]["location"]["formattedAddress"]
