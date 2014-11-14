@@ -1,0 +1,28 @@
+<h1>This is a list of your favorite restaurants!</h1>
+
+<% @restaurants.map do |restaurant| %>
+  Name: <%= restaurant.name %><br/>
+  <% if restaurant.category and restaurant.category != "" %>
+    Category: <%= restaurant.category %><br/>
+  <% else %>
+    Category: none<br/>
+  <% end %>
+  Address: <%= restaurant.address %><br/>
+  <% if restaurant.phone_number and restaurant.phone_number != "Unavailable" %>
+    Phone number: <%= restaurant.phone_number %><br/>
+  <% else %>
+    Phone number: Unavailable<br/>
+  <% end %>
+  <% if restaurant.url and restaurant.url != "Unavailable"%>
+    Restaurant URL: <%= link_to "#{restaurant.url}", restaurant.url %><br/>
+  <% else %>
+    Restaurant URL: Unavailable<br/>
+  <% end %>
+  <%= link_to 'Foursquare Page', "https://foursquare.com/v/#{restaurant.venue_id}" %><br/>
+  <%= link_to "Edit this restaurant's info", edit_restaurant_path(restaurant) %><br/>
+  <br/>
+<% end %>
+<br/>
+
+<%= link_to 'Search for nearby restaurants', new_query_path %><br/>
+<%= link_to 'Click here to go to the homepage', root_path %>

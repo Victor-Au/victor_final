@@ -1,0 +1,18 @@
+Just submit the info to save the restaurants into your list of favorites! (Please don't alter the pre-filled data.)<br/><br/>
+
+Note: If you've already added this restaurant, you'll be taken back to the list of restaurants.<br/><br/>
+
+<%= simple_form_for @restaurant do |f| %>
+  <%= f.input :name %>
+  <%= f.input :venue_id %>
+  <%= f.input :category %>
+  <%= f.submit %>
+<% end %>
+
+<br/>
+
+Note to instructors/TAs: Obviously, I'd ideally implement some code to auto-submit the form and skip this process.<br/><br/>
+
+<%= link_to 'Conduct a new search', new_query_path %><br/>
+<%= link_to 'Click here to see a list of your favorite restaurants', restaurants_path %><br/>
+<%= link_to 'Click here to go to the homepage', root_path %>

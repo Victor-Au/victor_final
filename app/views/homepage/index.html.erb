@@ -1,0 +1,10 @@
+<h1>Nearby Noms</h1>
+
+<% if current_user %>
+  <%= link_to 'Click here to see a list of your favorite restaurants', restaurants_path %><br/>
+  <%= link_to 'Search for nearby restaurants', new_query_path %><br/>
+  <br/>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Please sign in first!', new_user_session_path %>
+<% end %>

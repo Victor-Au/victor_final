@@ -1,0 +1,28 @@
+This should return up to 20 restaurants near your location.<br/><br/>
+
+<% i = 1 %>
+<%= @parsed_query["response"]["venues"].map do |restaurant| %>
+  <%= "#{i}." %><br/>
+  Name: <%= restaurant["name"] %><br/>
+  Address: <%= "#{restaurant["location"]["formattedAddress"][0]}, #{restaurant["location"]["formattedAddress"][1]}" %><br/>
+  # of Checkins: <%= restaurant['stats']['checkinsCount'] %> <br/>
+  <% if restaurant["categories"][0] %>
+    <% restaurant_category = restaurant["categories"][0]["name"] %>
+    Category: <%= restaurant_category %><br/>
+  <% else %>
+    <% restaurant_category = "" %>
+    Category: none<br/>
+  <% end %>
+  <%= link_to 'Foursquare Page', "https://foursquare.com/v/#{restaurant["id"]}" %><br/>
+  <%= link_to 'Click here to add this to your list of favorites', "#{new_restaurant_path}?id=#{restaurant["id"]}&name=#{restaurant["name"]}&category=#{restaurant_category}" %>
+  <br/>
+  <br/>
+  <% i+=1 %>
+  <% puts "" %>
+<% end %>
+
+<br/>
+All data has been provided by Foursquare.<br/><br/>
+
+<%= link_to 'Do a new search', new_query_path %><br/>
+<%= link_to 'Go to the homepage', root_path %>

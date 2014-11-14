@@ -1,0 +1,18 @@
+Edit the restaurant here.<br/>
+
+<%= simple_form_for @restaurant do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.input :url %>
+  <%= f.input :venue_id %>
+  <%= f.submit %>
+<% end %>
+
+<br/>
+<%= link_to 'Remove this restaurant from your list!', "#{restaurants_path}/#{@restaurant.id}", method: :delete %>
+
+<br/><br/>
+<%= link_to 'Click here to go back to the list of your favorite restaurants', restaurants_path %><br/>
+<%= link_to 'Click here to go to the homepage', root_path %>
