@@ -1,5 +1,6 @@
 This should return up to 20 restaurants near your location.<br/>
-<%= link_to 'Click here to go to the homepage', root_path %><br/><br/>
+<%= link_to 'Do another search', new_query_path %><br/>
+<%= link_to 'Go to the homepage', root_path %><br/><br/>
 
 <% i = 1 %>
 <%= @parsed_query["response"]["venues"].map do |restaurant| %>
